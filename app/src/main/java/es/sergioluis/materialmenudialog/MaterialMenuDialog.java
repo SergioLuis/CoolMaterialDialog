@@ -22,7 +22,7 @@ import android.widget.TextView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Highly customizable dialog window featuring (mostly) Material Design guidelines.
+ * Highly customizable dialog window featuring (most of the) Material Design guidelines.
  *
  * @author Sergio Luis Para
  * @version 1.0
@@ -49,7 +49,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
     private boolean dismissOnSecondary = false;
 
     /**
-     * Creates a Dialog window as described <a href="http://sergioluis.es/materialdialog">here</a>
+     * Creates a Dialog window as described <a href="https://github.com/SergioLuis/CoolMaterialDialog">here</a>
      *
      * @param context application's context. Please use {@code YourActivity.this} instead of {@code getApplicationContext()}
      */
@@ -77,11 +77,21 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         h.secondaryButton.setBackgroundDrawable(secondaryCircle);
     }
 
+    /**
+     * Set the title text for this dialog's window.
+     *
+     * @param title the new text to display in the title.
+     */
     @Override
     public void setTitle(CharSequence title) {
         h.headerTitle.setText(title);
     }
 
+    /**
+     * Set the title text for this dialog's window.
+     *
+     * @param resId the resource id of the new text to display in the title.
+     */
     @Override
     public void setTitle(int resId) {
         h.headerTitle.setText(resId);
@@ -98,8 +108,8 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
     }
 
     /**
-     * Sets dialog's title text size to {@code size}.</br>
-     * Default title text size is {@value 25sp}.
+     * Set the title's text size of this dialog's window to {@code size}.</br>
+     * Default title's text size is {@value 25sp}.
      *
      * @param size new text size, in sp.
      */
@@ -108,7 +118,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
     }
 
     /**
-     * Set dialog's title text shadow.
+     * Set dialog's title's text shadow.
      *
      * @param radius radius of the shadow. By default, {@value 6}
      * @param dx x distance from its drwan position. By default, {@value 2}
@@ -131,7 +141,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
 
     /**
      * Set dialog's header background to the specified {@code drawable}.</br>
-     * Default's header background is {@code #37474F}.</br>
+     * Default header's background is {@code #37474F}.</br>
      * This overrides previous calls to {@link #setHeaderBackgroundColor(int)} and
      * {@link #setHeaderBackgroundResource(int)}
      *
@@ -446,8 +456,14 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
     }
 
     /**
+     * Set the inner view to be the content of the Dialog.</br>
+     * The inner view, in the end, is where you encapsulate all the functionality you want to offer
+     * in your dialog.</br>
+     * Please keep in mind that, by default, it won't be scrollable until you define your view that
+     * way, and it's a little bit tricky. For more information, visit
+     * <a href="http://github.com/SergioLuis/CoolMaterialDialog">the repo</a>.
      *
-     * @param v
+     * @param v dialog's window inner view.
      */
     public void setInnerView(View v) {
         LinearLayout parentLayout = (LinearLayout) h.innerView.getParent();
@@ -508,6 +524,9 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
     }
 
+    /**
+     * A classic ViewHolder.
+     */
     private class ViewHolder {
 
         public RelativeLayout header;
@@ -550,6 +569,9 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
 
     }
 
+    /**
+     *
+     */
     public static class Builder {
 
         private Context context;
@@ -567,8 +589,9 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set the title text of the Dialog.
          *
-         * @param title
+         * @param title the new title to be displayed in the dialog.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setTitle(CharSequence title) {
@@ -577,8 +600,9 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set the title text of the Dialog.
          *
-         * @param resId
+         * @param resId the resource id of the new title to be displayed in the dialog.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setTitle(int resId){
@@ -587,6 +611,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set the title's text color of the Dialog.
          *
          * @param color
          * @return this Builder object to allow chaining of methods.
@@ -597,8 +622,10 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set the title's text size of the Dialog.</br>
+         * By default, that size is {@value 25sp}.
          *
-         * @param size
+         * @param size new title's text size in sp.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setTitleTextSize(float size) {
@@ -607,11 +634,12 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set the title's text shadow of the Dialog.
          *
-         * @param radius
-         * @param dx
-         * @param dy
-         * @param color
+         * @param radius radius of the shadow. By default, {@value 6}
+         * @param dx x distance from its drwan position. By default, {@value 2}
+         * @param dy y distance from its drwan position. By default, {@value 2}
+         * @param color shadow's color, by default black {@code #000}
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setTitleTextShadow(float radius, float dx, float dy, int color) {
@@ -620,8 +648,10 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set dialog's header background color to {@code color}. Default header's background color
+         * is #37474F.
          *
-         * @param color
+         * @param color new header's background color, in RGB integer representation.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setHeaderBackgroundColor(int color) {
@@ -630,8 +660,10 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set dialog's header background image to {@code drawable}. This method overrides previous calls
+         * to {@link #setHeaderBackgroundColor(int)} and {@link #setHeaderBackgroundResource(int)}.
          *
-         * @param drawable
+         * @param drawable new header's background image.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setHeaderBackgroundDrawable(Drawable drawable) {
@@ -640,8 +672,11 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set dialog's header background to the resource file specified. This method overrides previous
+         * calls to {@link #setHeaderBackgroundDrawable(android.graphics.drawable.Drawable)} and
+         * {@link #setHeaderBackgroundColor(int)}.
          *
-         * @param resId
+         * @param resId resource file identifier.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setHeaderBackgroundResource(int resId) {
@@ -650,8 +685,14 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set dialog's header background image scale type. Please have in mind that, by default,
+         * the dialog has no header background image (only a solid color), so this method is useful
+         * only with {@link #setHeaderBackgroundResource(int)} or
+         * {@link #setHeaderBackgroundDrawable(android.graphics.drawable.Drawable)}</br>
          *
-         * @param scale
+         * By default, said scale type is {@code centerCrop}
+         *
+         * @param scale header's background image scale type.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setHeaderBackgroundScaleType(ImageView.ScaleType scale) {
@@ -660,8 +701,11 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set header's primary image drawable. By default, it has no drawable nor resource set.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param drawable
+         * @param drawable new header's primary image drawable.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setPrimaryHeaderImageDrawable(Drawable drawable) {
@@ -670,8 +714,11 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set header's primary image resource. By default, it has no drawable nor resource set.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param resId
+         * @param resId new header's primary image resource identifier.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setPrimaryHeaderImageResource(int resId) {
@@ -680,8 +727,11 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set header's primary image scale type. By default, it is {@code centerCrop}.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param scale
+         * @param scale new header's primary image scale type.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setPrimaryHeaderImageScaleType(ImageView.ScaleType scale) {
@@ -690,6 +740,10 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set header's primary image visibility to {@code View.INVISIBLE}. By default, said image has no drawable nor resource, and its
+         * visibility is {@code View.VISIBLE}.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
          * @return this Builder object to allow chaining of methods.
          */
@@ -699,8 +753,12 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set header's secondary image drawable. By default, it is a XML oval shape drawable.
+         * The new image will be circle shaped.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param drawable
+         * @param drawable new header's secondary image drawable.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setSecondaryHeaderImageDrawable(Drawable drawable) {
@@ -709,8 +767,12 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set header's secondary image resource id. By default, it is a XML oval shape drawable.
+         * The new image will be circle shaped.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param resId
+         * @param resId new header's secondary image resource id.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setSecondaryHeaderImageResource(int resId) {
@@ -719,8 +781,11 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set header's secondary image scale type. By default, it is {@code centerCrop}.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param scale
+         * @param scale new header's secondary image scale type.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setSecondaryHeaderImageScaleType(ImageView.ScaleType scale) {
@@ -729,6 +794,9 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Hide header's secondary image. By default, it is a XML oval shape drawable.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
          * @return this Builder object to allow chaining of methods.
          */
@@ -738,9 +806,14 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Register a callback to be invoked when the primary button is clicked. Primary button is
+         * the bigger one, at the right of the dialog, and it wont be visible until it has a
+         * View.OnClickListener callback registered.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param l
-         * @param dismiss
+         * @param l callback to be invoked when the primary button is clicked.
+         * @param dismiss if the dialog must be dismissed once the callback action is complete.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setOnPrimaryButtonClickListener(View.OnClickListener l, boolean dismiss) {
@@ -749,8 +822,14 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set primary button's image to the specified drawable, centered in. Primary button is the
+         * bigger one, at the right of the dialog, and it wont be visible until it has a
+         * {@code View.OnClickListener} callback registered. By default, primary button's image is
+         * the ic_action_accept stock image.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param drawable
+         * @param drawable new primary button's image drawable.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setPrimaryButtonImageDrawable(Drawable drawable) {
@@ -759,8 +838,14 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set primary button's image to the specified resource, centered in. Primary button is the
+         * bigger one, at the right of the dialog, and it wont be visible until it has a
+         * {@code View.OnClickListener} callback registered. By default, primary button's image is
+         * the ic_action_accept stock image.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param resId
+         * @param resId new primary button's image resource identifier.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setPrimaryButtonImageResource(int resId) {
@@ -769,8 +854,12 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Define the color of the primary button when it is in the default state. Default primary
+         * button's default color is #E91E63, Pink 500 in the Material Design Color guide.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color
+         * @param color new color for the button when it is in its default state, in RGBA int representation.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setPrimaryButtonDefaultColor(int color) {
@@ -779,8 +868,13 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Define the color of the primary button when it is focused (when the button is highlighted
+         * using the trackball or directional pad). Default primary button's focused color is
+         * #EC407A, Pink 400 in the Material Design Color guide.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color
+         * @param color new color for the button when it is focused, in RGBA int representation.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setPrimaryButtonFocusedColor(int color) {
@@ -789,8 +883,12 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Define the color of the primary button when it is pressed (activated). Default primary
+         * button's pressed color is #AD1457, Pink 900 in the Material Design Color guide.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color
+         * @param color new color for the button when it is pressed, in RGBA int representation.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setPrimaryButtonPressedColor(int color) {
@@ -799,9 +897,14 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Register a callback to be invoked when the secondary button is clicked. Secondary button
+         * is the smaller one, and it wont be visible until it has a {@code View.OnClickListener} callback
+         * registered.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param l
-         * @param dismiss
+         * @param l callback to be invoked when the primary button is clicked.
+         * @param dismiss if the dialog must be dismissed once the callback action is complete.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setOnSecondaryButtonClickListener(View.OnClickListener l, boolean dismiss) {
@@ -810,8 +913,14 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set secondary button's image to the specified drawable, centered in. Secondary button is the
+         * smaller one, at the left of the dialog, and it wont be visible until it has a
+         * {@code View.OnClickListener} callback registered. By default, secondary button's image is
+         * the ic_action_cancel stock image.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param drawable
+         * @param drawable new secondary button's image drawable.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setSecondaryButtonImageDrawable(Drawable drawable) {
@@ -820,8 +929,14 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set secondary button's image to the specified resource, centered in. Secondary button is the
+         * smaller one, at the left of the dialog, and it wont be visible until it has a
+         * {@code View.OnClickListener} callback registered. By default, secondary button's image is
+         * the ic_action_cancel stock image.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param resId
+         * @param resId new secondary button's image resource identifier.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setSecondaryButtonImageResource(int resId) {
@@ -830,7 +945,8 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
-         *
+         * Define the color of the secondary button when it is in the default state. Default
+         * secondary button's default color is #FFC107, Amber 500 in the Material Design Color guide.
          * @param color
          * @return this Builder object to allow chaining of methods.
          */
