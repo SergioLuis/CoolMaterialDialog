@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Header -->
+    <dimen name="header_height">100dp</dimen>
+    <dimen name="header_elevation">5dp</dimen>
+
+    <!-- Header title -->
+    <dimen name="title_text_size">25sp</dimen>
+    <dimen name="title_left_margin">10dp</dimen>
+
+    <!-- Header image and its background -->
+    <dimen name="image_width">48dp</dimen>
+    <dimen name="image_background_width">68dp</dimen>
+    <dimen name="image_left_margin">26dp</dimen>
+    <dimen name="image_background_left_margin">16dp</dimen>
+    <dimen name="image_elevation">10dp</dimen>
+    <dimen name="image_background_elevation">8dp</dimen>
+
+    <!-- Inner view -->
+    <dimen name="inner_padding_top">25dp</dimen>
+    <dimen name="inner_padding">16dp</dimen>
+
+    <!-- Primary button -->
+    <dimen name="primary_button_width">50dp</dimen>
+    <!-- 100 - 50/2 -->
+    <dimen name="primary_button_margin_top">75dp</dimen>
+    <!-- sqrt(2 * 50^2) -->
+    <dimen name="primary_image_width">35dp</dimen>
+    <!-- 100 - 35/2 -->
+    <dimen name="primary_image_margin_top">82dp</dimen>
+    <dimen name="primary_button_margin_right">26dp</dimen>
+    <!-- 26 + (50-35)/2 -->
+    <dimen name="primary_image_margin_right">32dp</dimen>
+    <dimen name="primary_button_elevation">10dp</dimen>
+    <dimen name="primary_image_elevation">12dp</dimen>
+    <dimen name="primary_button_shadow">77dp</dimen>
+
+    <!-- Secondary button -->
+    <dimen name="secondary_button_width">40dp</dimen>
+    <!-- 100 - 40/2 -->
+    <dimen name="secondary_button_margin_top">80dp</dimen>
+    <!-- sqrt(2 * 40^2) -->
+    <dimen name="secondary_image_width">29dp</dimen>
+    <!-- 100 - 29/2 -->
+    <dimen name="secondary_image_margin_top">85dp</dimen>
+    <dimen name="secondary_button_margin_right">100dp</dimen>
+    <!-- 100 + (40-29)/2 -->
+    <dimen name="secondary_image_margin_right">105dp</dimen>
+    <dimen name="secondary_button_elevation">10dp</dimen>
+    <dimen name="secondary_image_elevation">12dp</dimen>
+    <dimen name="secondary_button_shadow">82dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+</resources>

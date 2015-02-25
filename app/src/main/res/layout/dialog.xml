@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/header_height"
+            android:layout_weight="2"
+            android:background="@color/material_blue_grey_dark"
+            android:elevation="@dimen/header_elevation">
+
+            <ImageView
+                android:id="@+id/header_background_imageview"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                android:layout_height="100dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/header_circle"
+                android:layout_width="@dimen/image_background_width"
+                android:layout_height="@dimen/image_background_width"
+                android:src="@color/white"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:layout_marginLeft="@dimen/image_background_left_margin"
+                android:elevation="@dimen/image_background_elevation"/>
+
+            <ImageView
+                android:id="@+id/header_image"
+                android:layout_width="@dimen/image_width"
+                android:layout_height="@dimen/image_width"
+                android:layout_marginLeft="@dimen/image_left_margin"
+                android:layout_centerVertical="true"
+                android:elevation="@dimen/image_elevation"/>
+
+            <TextView
+                android:id="@+id/header_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="6"
+                android:layout_toRightOf="@+id/header_circle"
+                android:layout_marginLeft="@dimen/title_left_margin"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/title_text_size"
+                android:textColor="@color/white"/>
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/inner_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="@dimen/inner_padding_top"
+            android:paddingRight="@dimen/inner_padding"
+            android:paddingBottom="@dimen/inner_padding"
+            android:paddingLeft="@dimen/inner_padding"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/primary_button_shadow"
+        android:clickable="false"
+        android:visibility="invisible"
+        android:layout_width="@dimen/primary_button_width"
+        android:layout_height="@dimen/primary_button_width"
+        android:background="@drawable/circle_shadow"
+        android:layout_marginTop="@dimen/primary_button_shadow"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/primary_button_margin_right"/>
+
+    <View
+        android:id="@+id/primary_button_circle"
+        android:clickable="true"
+        android:visibility="invisible"
+        android:layout_width="@dimen/primary_button_width"
+        android:layout_height="@dimen/primary_button_width"
+        android:background="@drawable/primary_circle"
+        android:layout_marginTop="@dimen/primary_button_margin_top"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/primary_button_margin_right"
+        android:elevation="@dimen/primary_button_elevation"/>
+
+    <ImageView
+        android:id="@+id/primary_button_image"
+        android:clickable="true"
+        android:visibility="invisible"
+        android:layout_width="@dimen/primary_image_width"
+        android:layout_height="@dimen/primary_image_width"
+        android:src="@drawable/ic_action_accept"
+        android:layout_marginTop="@dimen/primary_image_margin_top"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/primary_image_margin_right"
+        android:elevation="@dimen/primary_image_elevation"/>
+
+    <View
+        android:id="@+id/secondary_button_shadow"
+        android:clickable="false"
+        android:visibility="invisible"
+        android:layout_width="@dimen/secondary_button_width"
+        android:layout_height="@dimen/secondary_button_width"
+        android:background="@drawable/circle_shadow"
+        android:layout_marginTop="@dimen/secondary_button_shadow"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/secondary_button_margin_right"/>
+
+    <View
+        android:id="@+id/secondary_button_circle"
+        android:clickable="true"
+        android:visibility="invisible"
+        android:layout_width="@dimen/secondary_button_width"
+        android:layout_height="@dimen/secondary_button_width"
+        android:background="@drawable/secondary_circle"
+        android:layout_marginTop="@dimen/secondary_button_margin_top"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/secondary_button_margin_right"
+        android:elevation="@dimen/secondary_button_elevation"/>
+
+    <ImageView
+        android:id="@+id/secondary_button_image"
+        android:clickable="true"
+        android:visibility="invisible"
+        android:layout_width="@dimen/secondary_image_width"
+        android:layout_height="@dimen/secondary_image_width"
+        android:src="@drawable/ic_action_cancel"
+        android:layout_marginTop="@dimen/secondary_image_margin_top"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/secondary_image_margin_right"
+        android:elevation="@dimen/secondary_button_elevation"/>
+
+</RelativeLayout>
