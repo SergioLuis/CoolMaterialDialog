@@ -41,12 +41,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Highly customizable dialog window featuring (most of the) Material Design guidelines.
- *
+ * <p/>
  * The dialog has two buttons, called {@code primaryButton} and {@code secondaryButton}. The primary
  * button is the bigger one, so it should perform the main action of the dialog, such as accept or
  * play music. The secondary button is smaller and on the left of the primary, so it should perform
  * a secondary (and maybe complementary) action, like cancel or show help.
- *
+ * <p/>
  * Content view is not scrollable by default, and this Dialog class provide no help to make it
  * scrollable, so you must implement that functionality in your own layout. Have in mind that a Dialog
  * is not supposed to take a lot of screen size, so please make sure your Dialog looks fine among
@@ -617,8 +617,8 @@ public class CoolMaterialDialog extends Dialog {
     }
 
     /**
-     * A builder class to make {@link es.sergioluis.materialmenudialog.CoolMaterialDialog}. Althought
-     * you can make your dialog just using the public methods of your instance of {@link es.sergioluis.materialmenudialog.CoolMaterialDialog},
+     * A builder class to make an instance of {@link es.sergioluis.materialmenudialog.CoolMaterialDialog}.
+     * Althought you can make your dialog just using the public methods of your instance of {@link es.sergioluis.materialmenudialog.CoolMaterialDialog},
      * dialog's width may be incorrect. The {@link #create()} method prevents that issue. Plus, this
      * Builder class provide an easy way to do method chaining and some super-charged methods to
      * do more in less code.
@@ -690,7 +690,7 @@ public class CoolMaterialDialog extends Dialog {
         /**
          * Set the title text and its color.
          *
-         * @param resId new dialog's title text resource.
+         * @param resId   new dialog's title text resource.
          * @param colorId new dialog's title text color.
          * @return this Builder object to allow chaining of methods.
          */
@@ -703,7 +703,7 @@ public class CoolMaterialDialog extends Dialog {
         /**
          * Set the title text and its color.
          *
-         * @param title new dialog's title text.
+         * @param title   new dialog's title text.
          * @param colorId new dialog's title text color.
          * @return this Builder object to allow chaining of methods.
          */
@@ -783,7 +783,7 @@ public class CoolMaterialDialog extends Dialog {
         /**
          * Set dialog's header background image.
          *
-         * @param resId new header background image.
+         * @param resId     new header background image.
          * @param scaleTYpe background image scale type.
          * @return this Builder object to allow chaining of methods.
          */
@@ -796,7 +796,7 @@ public class CoolMaterialDialog extends Dialog {
         /**
          * Set dialog's header background image.
          *
-         * @param drawable new header background image.
+         * @param drawable  new header background image.
          * @param scaleType background image scale type.
          * @return this Builder object to allow chaining of methods.
          */
@@ -851,7 +851,7 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param resId new header's primary image resource identifier.
+         * @param resId     new header's primary image resource identifier.
          * @param scaleType new header's primary image scale type.
          * @return this Builder object to allow chaining of methods.
          */
@@ -867,7 +867,7 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param drawable new header's primary image drawable.
+         * @param drawable  new header's primary image drawable.
          * @param scaleType new header's primary image scale type.
          * @return this Builder object to allow chaining of methods.
          */
@@ -937,7 +937,7 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param resId new header's secondary image resource id.
+         * @param resId     new header's secondary image resource id.
          * @param scaleType new header's secondary image scale type.
          * @return this Builder object to allow chaining of methods.
          */
@@ -953,7 +953,7 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param drawable new header's secondary image drawable.
+         * @param drawable  new header's secondary image drawable.
          * @param scaleType new header's secondary image scale type.
          * @return this Builder object to allow chaining of methods.
          */
@@ -1072,8 +1072,8 @@ public class CoolMaterialDialog extends Dialog {
          * @param defaultColor color of the primary button when it is in its default state.
          * @param pressedColor color of the primary button when it is pressed (activated).
          * @param focusedColor color of the primary button when it is focused.
-         * @param l callback to be invoked when the primary button is clicked.
-         * @param dismiss if the dialog must be dismissed once the callback action is complete.
+         * @param l            callback to be invoked when the primary button is clicked.
+         * @param dismiss      if the dialog must be dismissed once the callback action is complete.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setPrimaryButton(@ColorRes int defaultColor, @ColorRes int pressedColor, @ColorRes int focusedColor, View.OnClickListener l, boolean dismiss) {
@@ -1181,8 +1181,8 @@ public class CoolMaterialDialog extends Dialog {
          * @param defaultColor color of the secondary button when it is in its default state.
          * @param pressedColor color of the secondary button when it is pressed (activated).
          * @param focusedColor color of the secondary button when it is focused.
-         * @param l callback to be invoked when the secondary button is clicked.
-         * @param dismiss if the dialog must be dismissed once the callback action is complete.
+         * @param l            callback to be invoked when the secondary button is clicked.
+         * @param dismiss      if the dialog must be dismissed once the callback action is complete.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setSecondaryButton(@ColorRes int defaultColor, @ColorRes int pressedColor, @ColorRes int focusedColor, View.OnClickListener l, boolean dismiss) {
