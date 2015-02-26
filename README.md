@@ -1,8 +1,32 @@
 # CoolMaterialDialog
 
-## Some Material Design in a highly customizable dialog.
+#### Some Material Design in a highly customizable dialog. Min API: 14
 
-![Vanilla dialog](https://img.imgur.com/VNNhXm2.png)
+-----------------------------------------------------------
+
+## Vanilla dialog  
+
+![Vanilla dialog](https://img.imgur.com/VNNhXm2.png)  
+
+
+```java
+CoolMaterialDialog.Builder defaultBuilder = new CoolMaterialDialog.Builder(MainActivity.this);
+defaultBuilder.setPrimaryHeaderImageResource(R.drawable.ic_launcher)
+    .setOnPrimaryButtonClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(getApplicationContext(), "Primary button", Toast.LENGTH_SHORT).show();
+        }
+    }, true)
+   .setOnSecondaryButtonClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(getApplicationContext(), "Secondary button", Toast.LENGTH_SHORT).show();
+        }
+   }, true)
+   .setTitle("Vanilla")
+   .create().show();
+```
 
 * __Header primary image__ is the Andy image. By default, there is not drawable nor resource set. You can set the image using ```setPrimaryHeaderImageDrawable(Drawable drawable)``` or ```setPrimaryHeaderImageResource(int resId)```. By default, it has no scale type. You can change that using ```setPrimaryHeaderImageScaleType(ImageView.ScaleType type)```.
 * __Header secondary image__ is the white circle behing Andy. By default, is a XML circle drawable. It will still be circle shaped even if you change it. You can change the header secondary image using ```setSecondaryHeaderImageDrawable(Drawable drawable)``` or ```setSecondaryHeaderImageResource(int resId)```. By default, its scale type is centerCrop0 You can change that using ```setSecondaryHeaderImageScaleType(ImageView.ScaleType type)```. You can hide the secondary image using ```hideSecondaryHeaderImage()```.
@@ -26,30 +50,14 @@
     * __Secondary button focused color__ is, by default, Pink 400. You can use ```setSecondaryButtonFocusedColor(int color)``` to change it.
     * __Secondary button click listener__ is set with ```setOnSecondaryButtonClickListener(View.OnClickListener l, boolean dismiss)```. The dismiss flag indicates if the dialog should be dismissed once the action in the ```OnClick``` callback is completed. The button won't be visible until it has a ```OnClickListener``` callback attached.  
 
-```java
-MaterialMenuDialog.Builder defaultBuilder = new MaterialMenuDialog.Builder(MainActivity.this);
-defaultBuilder.setPrimaryHeaderImageResource(R.drawable.ic_launcher)
-    .setOnPrimaryButtonClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Toast.makeText(getApplicationContext(), "Primary button", Toast.LENGTH_SHORT).show();
-        }
-    }, true)
-   .setOnSecondaryButtonClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Toast.makeText(getApplicationContext(), "Secondary button", Toast.LENGTH_SHORT).show();
-        }
-   }, true)
-   .setTitle("Vanilla")
-   .create().show();
-```
+--------------------------------------------------------------------------
 
+## Delibes dialog
 
 ![Delibes dialog](https://img.imgur.com/9GXALFQ.png)  
 
 ```java
-MaterialMenuDialog.Builder uvaBuilder = new MaterialMenuDialog.Builder(MainActivity.this);
+CoolMaterialDialog.Builder uvaBuilder = new CoolMaterialDialog.Builder(MainActivity.this);
 uvaBuilder.setSecondaryHeaderImageResource(R.drawable.uva_logo)
     .setHeaderBackgroundResource(R.drawable.campus_miguel_delibes)
     .setTitle("Campus Miguel Delibes")
@@ -61,27 +69,35 @@ uvaBuilder.setSecondaryHeaderImageResource(R.drawable.uva_logo)
         }
     }, true)
     .setPrimaryButtonImageResource(R.drawable.ic_action_call)
-    .setPrimaryButtonDefaultColor(Color.parseColor("#2196F3"))
-    .setPrimaryButtonPressedColor(Color.parseColor("#0D47A1"))
-    .setOnSecondaryButtonClickListener(new View.OnClickListener() {
-    @Override
-        public void onClick(View v) {
-            // None
-        }
-    }, true)
+    .setPrimaryButton(R.color.blue_default, R.color.blue_pressed, R.color.blue_focused, 
+        new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Call stuff
+            }
+        }, true)
     .setSecondaryButtonImageResource(R.drawable.ic_action_directions)
-    .setSecondaryButtonDefaultColor(Color.parseColor("#FFC107"))
-    .setSecondaryButtonPressedColor(Color.parseColor("#FF6F00"))
+    .setSecondaryButton(R.color.yellow_default, R.color.yellow_pressed, R.color.yellow_focused,
+        new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Maps stuff
+            }
+        }, true)
     .setInnerView(R.layout.content_uva);
     .create().show();
 ```
 
 * __Inner view__ is your main content. It is set through _setInnerView(int resId)_ or _setInnerView(View v)_.  
 
+-----------------------------------------------------------------
+
+## Waters dialog
+
 ![Waters dialog](https://img.imgur.com/9pbNszq.png)  
 
 ```java
-MaterialMenuDialog.Builder rogerBuilder = new MaterialMenuDialog.Builder(MainActivity.this);
+CoolMaterialDialog.Builder rogerBuilder = new CoolMaterialDialog.Builder(MainActivity.this);
 rogerBuilder.setSecondaryHeaderImageResource(R.drawable.roger_waters)
     .setTitle("Roger Waters")
     .setOnPrimaryButtonClickListener(new View.OnClickListener() {
