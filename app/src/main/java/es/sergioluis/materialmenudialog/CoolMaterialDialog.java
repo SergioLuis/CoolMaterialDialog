@@ -566,8 +566,8 @@ public class CoolMaterialDialog extends Dialog {
      */
     @Override
     public void setContentView(View v) {
-        LinearLayout parentLayout = (LinearLayout) vh.innerView.getParent();
-        int index = parentLayout.indexOfChild(vh.innerView);
+        LinearLayout parentLayout = (LinearLayout) vh.contentView.getParent();
+        int index = parentLayout.indexOfChild(vh.contentView);
         parentLayout.removeViewAt(index);
         parentLayout.addView(v, index);
     }
@@ -592,7 +592,7 @@ public class CoolMaterialDialog extends Dialog {
         public ImageView secondaryImage;
         public View secondaryButtonShadow;
 
-        public FrameLayout innerView;
+        public FrameLayout contentView;
 
         public ViewHolder(Dialog d) {
 
@@ -611,8 +611,7 @@ public class CoolMaterialDialog extends Dialog {
             secondaryImage = (ImageView) d.findViewById(R.id.secondary_button_image);
             secondaryButtonShadow = d.findViewById(R.id.secondary_button_shadow);
 
-            innerView = (FrameLayout) d.findViewById(R.id.inner_view);
-
+            contentView = (FrameLayout) d.findViewById(R.id.inner_view);
         }
 
     }
@@ -1030,7 +1029,7 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color new color for the button when it is in its default state, in RGBA int representation.
+         * @param color resource id of the new color for the button when it is in its default state.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setPrimaryButtonDefaultColor(@ColorRes int color) {
@@ -1045,7 +1044,7 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color new color for the button when it is focused, in RGBA int representation.
+         * @param color resource id of the new color for the button when it is focused.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setPrimaryButtonFocusedColor(@ColorRes int color) {
@@ -1059,7 +1058,7 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color new color for the button when it is pressed, in RGBA int representation.
+         * @param color resource id of the new color for the button when it is pressed.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setPrimaryButtonPressedColor(@ColorRes int color) {
@@ -1067,6 +1066,16 @@ public class CoolMaterialDialog extends Dialog {
             return this;
         }
 
+        /**
+         * Define colors and action of the primary button.
+         *
+         * @param defaultColor color of the primary button when it is in its default state.
+         * @param pressedColor color of the primary button when it is pressed (activated).
+         * @param focusedColor color of the primary button when it is focused.
+         * @param l callback to be invoked when the primary button is clicked.
+         * @param dismiss if the dialog must be dismissed once the callback action is complete.
+         * @return this Builder object to allow chaining of methods.
+         */
         public Builder setPrimaryButton(@ColorRes int defaultColor, @ColorRes int pressedColor, @ColorRes int focusedColor, View.OnClickListener l, boolean dismiss) {
             dialog.setPrimaryButtonDefaultColor(defaultColor);
             dialog.setPrimaryButtonPressedColor(pressedColor);
@@ -1129,7 +1138,7 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color new color for the button when it is in its default state, in RGBA int representation.
+         * @param color resource id of the new color for the button when it is in its default state.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setSecondaryButtonDefaultColor(@ColorRes int color) {
@@ -1144,7 +1153,7 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color new color for the button when it is focused, in RGBA int representation.
+         * @param color resource id of the new color for the button when it is focused.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setSecondaryButtonFocusedColor(@ColorRes int color) {
@@ -1158,7 +1167,7 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color new color for the button when it is pressed, in RGBA int representarion.
+         * @param color resource id of the new color for the button when it is pressed.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setSecondaryButtonPressedColor(@ColorRes int color) {
@@ -1166,6 +1175,16 @@ public class CoolMaterialDialog extends Dialog {
             return this;
         }
 
+        /**
+         * Define colors and action of the secondary button.
+         *
+         * @param defaultColor color of the secondary button when it is in its default state.
+         * @param pressedColor color of the secondary button when it is pressed (activated).
+         * @param focusedColor color of the secondary button when it is focused.
+         * @param l callback to be invoked when the secondary button is clicked.
+         * @param dismiss if the dialog must be dismissed once the callback action is complete.
+         * @return this Builder object to allow chaining of methods.
+         */
         public Builder setSecondaryButton(@ColorRes int defaultColor, @ColorRes int pressedColor, @ColorRes int focusedColor, View.OnClickListener l, boolean dismiss) {
             dialog.setSecondaryButtonDefaultColor(defaultColor);
             dialog.setSecondaryButtonPressedColor(pressedColor);
@@ -1207,6 +1226,5 @@ public class CoolMaterialDialog extends Dialog {
             dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
             return dialog;
         }
-
     }
 }
