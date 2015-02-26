@@ -1,3 +1,18 @@
+/**
+ * Copyright 2015 Sergio Luis Para
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package es.sergioluis.materialmenudialog;
 
 import android.annotation.SuppressLint;
@@ -121,11 +136,11 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
      * Set dialog's title's text shadow.
      *
      * @param radius radius of the shadow. By default, {@value 6}
-     * @param dx x distance from its drwan position. By default, {@value 2}
-     * @param dy y distance from its drwan position. By default, {@value 2}
-     * @param color shadow color, by default black {@code #000}
+     * @param dx     x distance from its drwan position. By default, {@value 2}
+     * @param dy     y distance from its drwan position. By default, {@value 2}
+     * @param color  shadow color, by default black {@code #000}
      */
-    public void setTitleTextShadow(float radius, float dx, float dy, int color){
+    public void setTitleTextShadow(float radius, float dx, float dy, int color) {
         h.headerTitle.setShadowLayer(radius, dx, dy, color);
     }
 
@@ -227,7 +242,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
      * You can use this if you want a bigger image in the header, instead of using {@link #setPrimaryHeaderImageDrawable(android.graphics.drawable.Drawable)}
      * or {@link #setPrimaryHeaderImageResource(int)}.</br>
      * By default, mentioned background is a white circle. New background will be shaped as a circle.</br>
-     *
+     * <p/>
      * This overrides previous calls to {@link #setSecondaryHeaderImageResource(int)}
      *
      * @param drawable new header's image's background.
@@ -243,7 +258,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
      * You can use this if you want a bigger image in the header, instead of using {@link #setPrimaryHeaderImageDrawable(android.graphics.drawable.Drawable)}
      * or {@link #setPrimaryHeaderImageResource(int)}.</br>
      * By default, mentioned background is a white circle. New background will be shaped as a circle.</br>
-     *
+     * <p/>
      * This overrides previous calls to {@link #setSecondaryHeaderImageDrawable(android.graphics.drawable.Drawable)}
      *
      * @param resId new header image's background resource identifier.
@@ -267,7 +282,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
     /**
      * Hide dialog's header image's background.</br>
      * By default, mentioned background is a white circle.</br>
-     *
+     * <p/>
      * This leaves with no effect previous (and future) calls to {@link #setSecondaryHeaderImageDrawable(android.graphics.drawable.Drawable)}
      * and {@link #setSecondaryHeaderImageResource(int)}
      */
@@ -280,14 +295,14 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
      * Primary button is the bigger one, at the right of the dialog, and it wont be visible until
      * it has a {@code View.OnClickListener} callback registered.
      *
-     * @param l callback to be invoked when the primary button is clicked.
+     * @param l       callback to be invoked when the primary button is clicked.
      * @param dismiss if the dialog must be dismissed once the callback action is complete.
      */
     public void setOnPrimaryButtonClickListener(View.OnClickListener l, boolean dismiss) {
         h.primaryButton.setVisibility(View.VISIBLE);
         h.primaryImage.setVisibility(View.VISIBLE);
 
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             h.primaryButtonShadow.setVisibility(View.VISIBLE);
         }
 
@@ -304,12 +319,11 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
      * Set primary button's image to the specified {@code drawable}, centered in.</br>
      * Primary button is the bigger one, at the right of the dialog, and it wont be visible until it
      * has a {@code View.OnClickListener} callback registered.</br>
-     *
+     * <p/>
      * By default, primary button's image is the ic_action_accept stock image.
      *
-     * @see #setOnPrimaryButtonClickListener(android.view.View.OnClickListener, boolean)
-     *
      * @param drawable new primary button's image.
+     * @see #setOnPrimaryButtonClickListener(android.view.View.OnClickListener, boolean)
      */
     public void setPrimaryButtonImageDrawable(Drawable drawable) {
         h.primaryImage.setImageDrawable(drawable);
@@ -319,12 +333,11 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
      * Set primary button's image to the specified resource, centered in.</br>
      * Primary button is the bigger one, at the right of the dialog, and it wont be visible until it
      * has a {@code View.OnClickListener} callback registered.</br>
-     *
+     * <p/>
      * By default, primary button's image is the ic_action_accept stock image.
      *
-     * @see #setOnPrimaryButtonClickListener(android.view.View.OnClickListener, boolean)
-     *
      * @param resId new primary button's resource file identifier.
+     * @see #setOnPrimaryButtonClickListener(android.view.View.OnClickListener, boolean)
      */
     public void setPrimaryButtonImageResource(int resId) {
         h.primaryImage.setImageResource(resId);
@@ -370,14 +383,14 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
      * Secondary button is the smaller one, and it wont be visible until it has a
      * {@code View.OnClickListener} callback registered.
      *
-     * @param l callback to be invoked when the secondary button is clicked.
+     * @param l       callback to be invoked when the secondary button is clicked.
      * @param dismiss if the dialog must be dismissed once the callback action is complete.
      */
     public void setOnSecondaryButtonClickListener(View.OnClickListener l, boolean dismiss) {
         h.secondaryButton.setVisibility(View.VISIBLE);
         h.secondaryImage.setVisibility(View.VISIBLE);
 
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             h.secondaryButtonShadow.setVisibility(View.VISIBLE);
         }
 
@@ -394,12 +407,11 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
      * Set primary button's image to the specified {@code drawable}, centered in.</br>
      * Secondary button is the smaller one, and it wont be visible until it as a
      * {@code View.OnClickListener} callback registered.</br>
-     *
+     * <p/>
      * By default, primary button's image is the ic_action_cancel stock image.
      *
-     * @see #setOnSecondaryButtonClickListener(android.view.View.OnClickListener, boolean)
-     *
      * @param drawable new primary button's image.
+     * @see #setOnSecondaryButtonClickListener(android.view.View.OnClickListener, boolean)
      */
     public void setSecondaryButtonImageDrawable(Drawable drawable) {
         h.secondaryImage.setImageDrawable(drawable);
@@ -409,12 +421,11 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
      * Set secondary button's image to the specified resource, centered in.</br>
      * Secondary button is the smaller one, and it wont be visible until it as a
      * {@code View.OnClickListener} callback registered.</br>
-     *
+     * <p/>
      * By default, primary secondary's image is the ic_action_cancel stock image.
      *
-     * @see #setOnPrimaryButtonClickListener(android.view.View.OnClickListener, boolean)
-     *
      * @param resId new secondary button's resource file identifier.
+     * @see #setOnPrimaryButtonClickListener(android.view.View.OnClickListener, boolean)
      */
     public void setSecondaryButtonImageResource(int resId) {
         h.secondaryImage.setImageResource(resId);
@@ -477,7 +488,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
     @SuppressLint("deprecated")
     public boolean onTouch(View v, MotionEvent event) {
         int viewId = v.getId();
-        switch(event.getActionMasked()) {
+        switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
                 if (viewId == R.id.primary_button_circle || viewId == R.id.primary_button_image) {
                     h.primaryButton.setBackgroundDrawable(primaryCircleDark);
@@ -515,7 +526,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
     public void onClick(View v) {
         int vId = v.getId();
 
-        if(vId == h.primaryButton.getId() || vId == h.primaryImage.getId()){
+        if (vId == h.primaryButton.getId() || vId == h.primaryImage.getId()) {
             primaryListener.onClick(h.primaryButton);
             if (dismissOnPrimary) this.dismiss();
         } else {
@@ -578,8 +589,8 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         private MaterialMenuDialog dialog;
 
         /**
-         * Constructor using a context for this builder and the {@link es.sergioluis.materialmenudialog.MaterialMenuDialog}
-         * it creates.
+         * Constructor using a context for this builder and the
+         * {@link es.sergioluis.materialmenudialog.MaterialMenuDialog} it creates.
          *
          * @param context application's context.
          */
@@ -605,7 +616,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
          * @param resId the resource id of the new title to be displayed in the dialog.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setTitle(int resId){
+        public Builder setTitle(int resId) {
             dialog.setTitle(resId);
             return this;
         }
@@ -613,7 +624,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         /**
          * Set the title's text color of the Dialog.
          *
-         * @param color
+         * @param color new title's text color, in RGB integer representation.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setTitleTextColor(int color) {
@@ -637,9 +648,9 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
          * Set the title's text shadow of the Dialog.
          *
          * @param radius radius of the shadow. By default, {@value 6}
-         * @param dx x distance from its drwan position. By default, {@value 2}
-         * @param dy y distance from its drwan position. By default, {@value 2}
-         * @param color shadow's color, by default black {@code #000}
+         * @param dx     x distance from its drwan position. By default, {@value 2}
+         * @param dy     y distance from its drwan position. By default, {@value 2}
+         * @param color  shadow's color, by default black {@code #000}
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setTitleTextShadow(float radius, float dx, float dy, int color) {
@@ -689,7 +700,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
          * the dialog has no header background image (only a solid color), so this method is useful
          * only with {@link #setHeaderBackgroundResource(int)} or
          * {@link #setHeaderBackgroundDrawable(android.graphics.drawable.Drawable)}</br>
-         *
+         * <p/>
          * By default, said scale type is {@code centerCrop}
          *
          * @param scale header's background image scale type.
@@ -812,7 +823,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param l callback to be invoked when the primary button is clicked.
+         * @param l       callback to be invoked when the primary button is clicked.
          * @param dismiss if the dialog must be dismissed once the callback action is complete.
          * @return this Builder object to allow chaining of methods.
          */
@@ -903,7 +914,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param l callback to be invoked when the primary button is clicked.
+         * @param l       callback to be invoked when the primary button is clicked.
          * @param dismiss if the dialog must be dismissed once the callback action is complete.
          * @return this Builder object to allow chaining of methods.
          */
@@ -946,8 +957,11 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
 
         /**
          * Define the color of the secondary button when it is in the default state. Default
-         * secondary button's default color is #FFC107, Amber 500 in the Material Design Color guide.
-         * @param color
+         * secondary button's default color is #FFC107, Amber 500 in the Material Design Color guide.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
+         *
+         * @param color new color for the button when it is in its default state, in RGBA int representation.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setSecondaryButtonDefaultColor(int color) {
@@ -956,8 +970,13 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Define the color of the secondary button when it is focused (when the button is
+         * highlighted using the trackball or directional pad). Default secondary button's
+         * focused color is #FFCA28, Amber 400 in the Material Design Color guide.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color
+         * @param color new color for the button when it is focused, in RGBA int representation.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setSecondaryButtonFocusedColor(int color) {
@@ -966,8 +985,12 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Define the color of the secondary button when it is pressed (activated). Default secondary
+         * button's pressed color is #FF6F00, Amber 900 in the Material Design Color guide.</br>
+         * For more info about dialog's layout, please read
+         * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color
+         * @param color new color for the button when it is pressed, in RGBA int representarion.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setSecondaryButtonPressedColor(int color) {
@@ -976,9 +999,9 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
-         * Inflates de View in the layout file provided and sets it into the Dialog.
+         * Inflate de View in the layout file provided and set it into the Dialog.
          *
-         * @param resId
+         * @param resId resource identifier of the desired inner view.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setInnerView(int resId) {
@@ -988,8 +1011,9 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
         }
 
         /**
+         * Set the provided view inside the dialog.
          *
-         * @param v
+         * @param v desired inner view.
          * @return this Builder object to allow chaining of methods.
          */
         public Builder setInnerView(View v) {
@@ -999,7 +1023,7 @@ public class MaterialMenuDialog extends Dialog implements View.OnTouchListener, 
 
         /**
          * Creates a {@link es.sergioluis.materialmenudialog.MaterialMenuDialog} with the arguments
-         * suplied to the builder.
+         * given to the builder.
          *
          * @return the {@link es.sergioluis.materialmenudialog.MaterialMenuDialog} created.
          */
