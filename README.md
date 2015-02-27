@@ -1,6 +1,10 @@
 # CoolMaterialDialog
 
+<<<<<<< HEAD
 #### Some Material Design in a highly customizable dialog. Min API: 14
+=======
+#### Some Material Design in a highly customizable dialog.
+>>>>>>> 421cc072d86a1f9dcf9a2c7a8df6f57a6ddd3fc6
 
 -----------------------------------------------------------
 
@@ -44,7 +48,7 @@ defaultBuilder.setPrimaryHeaderImageResource(R.drawable.ic_launcher)
     * __Primary button focused color__ is, by default, Pink 400. You can use ```setPrimaryButtonFocusedColor(int color)``` to change it.
     * __Primary button click listener__ is set with ```setOnPrimaryButtonClickListener(View.OnClickListener l, boolean dismiss)```. The dismiss flag indicates if the dialog should be dismissed once the action in the ```OnClick callback``` is completed. The button won't be visible until it has a ```OnClickListener``` callback attached.
 * __Secondary button__ is the smaller one, Amber 500, on the left.
-    * __Secondary button drawable__ is the _ic\_action\_cancel_ image, on top of the secondary button. You can use _setSecondaryButtonImageResource(int resId)_ or _setSecondaryButtonImageDrawable(Drawable drawable)_ to change it.
+    * __Secondary button drawable__ is the _ic\_action\_cancel_ image, on top of the secondary button. You can use ```setSecondaryButtonImageResource(int resId)``` or ```setSecondaryButtonImageDrawable(Drawable drawable)``` to change it.
     * __Secondary button default color__ is, by default, Amber 500. You can use ```setSecondaryButtonDefaultColor(int color)``` to change it.
     * __Secondary button pressed color__ is, by default, Amber 900. You can use ```setSecondaryButtonPressedColor(int color)``` to change it.
     * __Secondary button focused color__ is, by default, Amber 400. You can use ```setSecondaryButtonFocusedColor(int color)``` to change it.
@@ -88,7 +92,11 @@ uvaBuilder.setSecondaryHeaderImageResource(R.drawable.uva_logo)
     .create().show();
 ```
 
-* __Inner view__ is your main content. It is set through _setInnerView(int resId)_ or _setInnerView(View v)_.  
+* __Inner view__ is your main content. It is set through ```setInnerView(int resId)``` or ```setInnerView(View v)```.  
+
+-----------------------------------------------------------------
+
+## Waters dialog
 
 -----------------------------------------------------------------
 
