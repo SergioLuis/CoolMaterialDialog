@@ -2,6 +2,14 @@
 
 #### Some Material Design in a highly customizable dialog. Min API: 14
 
+###### Usage instructions
+
+At the moment, this library is not available on Maven (it will be soon), but you can import the Android Studio project and use it. [Here is the 1.0.1 version](https://github.com/SergioLuis/CoolMaterialDialog/releases/tag/v1.0.1). Inside the zip you'll find the following:
+
+* A how-to add and use the Android Studio project.
+* Complete HTML Javadoc.
+* LICENSE file.
+
 -----------------------------------------------------------
 
 ## Vanilla dialog  
