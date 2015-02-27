@@ -70,12 +70,6 @@ uvaBuilder.setSecondaryHeaderImageResource(R.drawable.uva_logo)
     .setHeaderBackgroundResource(R.drawable.campus_miguel_delibes)
     .setTitle("Campus Miguel Delibes")
     .setTitleTextShadow(10, 2, 2, Color.BLACK)
-    .setOnPrimaryButtonClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            // None
-        }
-    }, true)
     .setPrimaryButtonImageResource(R.drawable.ic_action_call)
     .setPrimaryButton(R.color.blue_default, R.color.blue_pressed, R.color.blue_focused, 
         new View.OnClickListener() {
@@ -92,11 +86,11 @@ uvaBuilder.setSecondaryHeaderImageResource(R.drawable.uva_logo)
                 // Maps stuff
             }
         }, true)
-    .setInnerView(R.layout.content_uva);
+    .setContentView(R.layout.content_uva);
     .create().show();
 ```
 
-* __Inner view__ is your main content. It is set through ```setInnerView(int resId)``` or ```setInnerView(View v)```.  
+* __Inner view__ is your main content. It is set through ```setContentView(int resId)``` or ```setContentView(View v)```.  
 
 -----------------------------------------------------------------
 
@@ -119,5 +113,5 @@ rogerBuilder.setSecondaryHeaderImageResource(R.drawable.roger_waters)
         }
     }, true)
     .setHeaderBackgroundResource(R.drawable.dark_side)
-    .setInnerView(R.layout.content_roger_waters)
+    .setContentView(R.layout.content_roger_waters)
     .create().show();
