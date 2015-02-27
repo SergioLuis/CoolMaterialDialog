@@ -1,10 +1,6 @@
 # CoolMaterialDialog
 
-<<<<<<< HEAD
 #### Some Material Design in a highly customizable dialog. Min API: 14
-=======
-#### Some Material Design in a highly customizable dialog.
->>>>>>> 421cc072d86a1f9dcf9a2c7a8df6f57a6ddd3fc6
 
 -----------------------------------------------------------
 
