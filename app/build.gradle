@@ -1,23 +1,31 @@
 apply plugin: 'com.android.library'
 
 android {
+    signingConfigs {
+
+    }
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 21
         versionCode 1
-        versionName "1.0"
+        versionName '1.0.1'
     }
     buildTypes {
-        MaterialMenuDialog {
+        CoolMenuDialog {
+            minifyEnabled true
+            debuggable false
+            jniDebuggable false
+            versionNameSuffix '1.0.1'
         }
+    }
+    productFlavors {
     }
 }
 
 dependencies {
     compile 'de.hdodenhof:circleimageview:1.2.1'
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
 }

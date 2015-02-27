@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package es.sergioluis.materialmenudialog;
+package es.sergioluis.dialog;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -83,8 +82,6 @@ public class CoolMaterialDialog extends Dialog {
      *
      * @param context application's context. Please use {@code YourActivity.this} instead of {@code getApplicationContext()}
      */
-    @SuppressLint("deprecated")
-    @SuppressWarnings("deprecation")
     public CoolMaterialDialog(Context context) {
         super(context);
 
@@ -103,9 +100,8 @@ public class CoolMaterialDialog extends Dialog {
         secondaryCircleDark = context.getResources().getDrawable(R.drawable.secondary_circle_dark);
         secondaryCircleLight = context.getResources().getDrawable(R.drawable.secondary_circle_light);
 
-        // This is the reason of the deprecation warnings and lints suppressions.
-        vh.primaryButton.setBackgroundDrawable(primaryCircle);
-        vh.secondaryButton.setBackgroundDrawable(secondaryCircle);
+        ViewUtils.setBackgroundDrawable(vh.primaryButton, primaryCircle);
+        ViewUtils.setBackgroundDrawable(vh.secondaryButton, secondaryCircle);
 
         prepareClickListener();
         prepareTouchListener();
@@ -128,9 +124,6 @@ public class CoolMaterialDialog extends Dialog {
         };
     }
 
-    // setBackgroundDrawable is deprecated in API level 21
-    @SuppressLint("deprecated")
-    @SuppressWarnings("deprecation")
     private void prepareTouchListener() {
         touchListener = new View.OnTouchListener() {
 
@@ -140,30 +133,30 @@ public class CoolMaterialDialog extends Dialog {
                 switch (event.getActionMasked()) {
                     case MotionEvent.ACTION_DOWN:
                         if (viewId == R.id.primary_button_circle || viewId == R.id.primary_button_image) {
-                            vh.primaryButton.setBackgroundDrawable(primaryCircleDark);
+                            ViewUtils.setBackgroundDrawable(vh.primaryButton, primaryCircleDark);
                         } else if (viewId == R.id.secondary_button_circle || viewId == R.id.secondary_button_image) {
-                            vh.secondaryButton.setBackgroundDrawable(secondaryCircleDark);
+                            ViewUtils.setBackgroundDrawable(vh.secondaryButton, secondaryCircleDark);
                         }
                         return false;
                     case MotionEvent.ACTION_UP:
                         if (viewId == R.id.primary_button_circle || viewId == R.id.primary_button_image) {
-                            vh.primaryButton.setBackgroundDrawable(primaryCircle);
+                            ViewUtils.setBackgroundDrawable(vh.primaryButton, primaryCircle);
                         } else if (viewId == R.id.secondary_button_circle || viewId == R.id.secondary_button_image) {
-                            vh.secondaryButton.setBackgroundDrawable(secondaryCircle);
+                            ViewUtils.setBackgroundDrawable(vh.secondaryButton, secondaryCircle);
                         }
                         return false;
                     case MotionEvent.ACTION_HOVER_ENTER:
                         if (viewId == R.id.primary_button_circle || viewId == R.id.primary_button_image) {
-                            vh.primaryButton.setBackgroundDrawable(primaryCircleLight);
+                            ViewUtils.setBackgroundDrawable(vh.primaryButton, primaryCircleLight);
                         } else if (viewId == R.id.secondary_button_circle || viewId == R.id.secondary_button_image) {
-                            vh.secondaryButton.setBackgroundDrawable(secondaryCircleLight);
+                            ViewUtils.setBackgroundDrawable(vh.secondaryButton, secondaryCircleLight);
                         }
                         return false;
                     case MotionEvent.ACTION_HOVER_EXIT:
                         if (viewId == R.id.primary_button_circle || viewId == R.id.primary_button_image) {
-                            vh.primaryButton.setBackgroundDrawable(primaryCircle);
+                            ViewUtils.setBackgroundDrawable(vh.primaryButton, primaryCircle);
                         } else if (viewId == R.id.secondary_button_circle || viewId == R.id.secondary_button_image) {
-                            vh.secondaryButton.setBackgroundDrawable(secondaryCircle);
+                            ViewUtils.setBackgroundDrawable(vh.secondaryButton, secondaryCircle);
                         }
                         return false;
                     default:
@@ -197,10 +190,10 @@ public class CoolMaterialDialog extends Dialog {
      * Set dialog's title color to {@code color}.</br>
      * Default title text color is {@code #FFFFFF}.
      *
-     * @param color new text's color.
+     * @param colorResId new text's color resource.
      */
-    public void setTitleTextColor(@ColorRes int color) {
-        vh.headerTitle.setTextColor(mContext.getResources().getColor(color));
+    public void setTitleTextColor(@ColorRes int colorResId) {
+        vh.headerTitle.setTextColor(mContext.getResources().getColor(colorResId));
     }
 
     /**
@@ -219,20 +212,20 @@ public class CoolMaterialDialog extends Dialog {
      * @param radius radius of the shadow in dp. By default, {@value 6}
      * @param dx     x distance in dp from its drawn position. By default, {@value 2}
      * @param dy     y distance in dp from its drawn position. By default, {@value 2}
-     * @param color  shadow color, by default black {@code #000}
+     * @param argbColor  shadow color, by default black {@code #000}, in ARGB representation.
      */
-    public void setTitleTextShadow(float radius, float dx, float dy, int color) {
-        vh.headerTitle.setShadowLayer(radius, dx, dy, color);
+    public void setTitleTextShadow(float radius, float dx, float dy, int argbColor) {
+        vh.headerTitle.setShadowLayer(radius, dx, dy, argbColor);
     }
 
     /**
-     * Set dialog's header background color to {@code color}.</br>
+     * Set dialog's header background color to {@code colorResId}.</br>
      * Default header's background color is {@code #37474F}.</br>
      *
-     * @param color new header's background color, in RGB integer representation.
+     * @param colorResId new header's background color resource.
      */
-    public void setHeaderBackgroundColor(@ColorRes int color) {
-        vh.header.setBackgroundColor(mContext.getResources().getColor(color));
+    public void setHeaderBackgroundColor(@ColorRes int colorResId) {
+        vh.header.setBackgroundColor(mContext.getResources().getColor(colorResId));
     }
 
     /**
@@ -243,8 +236,6 @@ public class CoolMaterialDialog extends Dialog {
      *
      * @param drawable new header's background {@code drawable}.
      */
-    @SuppressLint("deprecated")
-    @SuppressWarnings("deprecation")
     public void setHeaderBackgroundDrawable(Drawable drawable) {
         vh.headerBackgroundImage.setImageDrawable(drawable);
         vh.headerBackgroundImage.setVisibility(View.VISIBLE);
@@ -328,8 +319,6 @@ public class CoolMaterialDialog extends Dialog {
      *
      * @param drawable new header's image's background.
      */
-    @SuppressLint("deprecated")
-    @SuppressWarnings("deprecation")
     public void setSecondaryHeaderImageDrawable(Drawable drawable) {
         vh.headerCircle.setImageDrawable(drawable);
     }
@@ -429,10 +418,10 @@ public class CoolMaterialDialog extends Dialog {
      * Default primary button's default color is {@code #E91E63}, Pink 500 in the Material Design
      * Color guide.
      *
-     * @param colorId resource id of the new color for the button when it is in its default state.
+     * @param colorResId resource id of the new color for the button when it is in its default state.
      */
-    public void setPrimaryButtonDefaultColor(@ColorRes int colorId) {
-        primaryCircle.setColorFilter(mContext.getResources().getColor(colorId),
+    public void setPrimaryButtonDefaultColor(@ColorRes int colorResId) {
+        primaryCircle.setColorFilter(mContext.getResources().getColor(colorResId),
                 PorterDuff.Mode.SRC_ATOP);
         vh.primaryButton.invalidate();
     }
@@ -442,10 +431,10 @@ public class CoolMaterialDialog extends Dialog {
      * Default primary button's pressed color is {@code #AD1457}, Pink 900 in the Material Design
      * Color guide.
      *
-     * @param colorId resource id of the new color for the button when it is pressed.
+     * @param colorResId resource id of the new color for the button when it is pressed.
      */
-    public void setPrimaryButtonPressedColor(@ColorRes int colorId) {
-        primaryCircleDark.setColorFilter(mContext.getResources().getColor(colorId),
+    public void setPrimaryButtonPressedColor(@ColorRes int colorResId) {
+        primaryCircleDark.setColorFilter(mContext.getResources().getColor(colorResId),
                 PorterDuff.Mode.SRC_ATOP);
     }
 
@@ -455,10 +444,10 @@ public class CoolMaterialDialog extends Dialog {
      * Default primary button's focused color is {@code #EC407A}, Pink 400 in the Material Design
      * Color guide.
      *
-     * @param colorId resource id of the new color for the button when it is focused.
+     * @param colorResId resource id of the new color for the button when it is focused.
      */
-    public void setPrimaryButtonFocusedColor(@ColorRes int colorId) {
-        primaryCircleLight.setColorFilter(mContext.getResources().getColor(colorId),
+    public void setPrimaryButtonFocusedColor(@ColorRes int colorResId) {
+        primaryCircleLight.setColorFilter(mContext.getResources().getColor(colorResId),
                 PorterDuff.Mode.SRC_ATOP);
     }
 
@@ -521,10 +510,10 @@ public class CoolMaterialDialog extends Dialog {
      * Default secondary button's default color is {@code #FFC107}, Amber 500 in the Material Design
      * Color guide.
      *
-     * @param colorId resource id of the new color for the button when it is in its default state.
+     * @param colorResId resource id of the new color for the button when it is in its default state.
      */
-    public void setSecondaryButtonDefaultColor(@ColorRes int colorId) {
-        secondaryCircle.setColorFilter(mContext.getResources().getColor(colorId),
+    public void setSecondaryButtonDefaultColor(@ColorRes int colorResId) {
+        secondaryCircle.setColorFilter(mContext.getResources().getColor(colorResId),
                 PorterDuff.Mode.SRC_ATOP);
         vh.secondaryButton.invalidate();
     }
@@ -534,10 +523,10 @@ public class CoolMaterialDialog extends Dialog {
      * Default secondary button's pressed color is {@code #FF6F00}, Amber 900 in the Material Design
      * Color guide.
      *
-     * @param colorId resource id of the new color for the button when it is pressed.
+     * @param colorResId resource id of the new color for the button when it is pressed.
      */
-    public void setSecondaryButtonPressedColor(@ColorRes int colorId) {
-        secondaryCircleDark.setColorFilter(mContext.getResources().getColor(colorId),
+    public void setSecondaryButtonPressedColor(@ColorRes int colorResId) {
+        secondaryCircleDark.setColorFilter(mContext.getResources().getColor(colorResId),
                 PorterDuff.Mode.SRC_ATOP);
     }
 
@@ -547,10 +536,10 @@ public class CoolMaterialDialog extends Dialog {
      * Default secondary button's focused color is {@code #FFCA28}, Amber 400 in the Material Design
      * Color guide.
      *
-     * @param colorId resource id of the new color for the button when it is focused.
+     * @param colorResId resource id of the new color for the button when it is focused.
      */
-    public void setSecondaryButtonFocusedColor(@ColorRes int colorId) {
-        secondaryCircle.setColorFilter(mContext.getResources().getColor(colorId),
+    public void setSecondaryButtonFocusedColor(@ColorRes int colorResId) {
+        secondaryCircle.setColorFilter(mContext.getResources().getColor(colorResId),
                 PorterDuff.Mode.SRC_ATOP);
     }
 
@@ -617,8 +606,8 @@ public class CoolMaterialDialog extends Dialog {
     }
 
     /**
-     * A builder class to make an instance of {@link es.sergioluis.materialmenudialog.CoolMaterialDialog}.
-     * Althought you can make your dialog just using the public methods of your instance of {@link es.sergioluis.materialmenudialog.CoolMaterialDialog},
+     * A builder class to make an instance of {@link es.sergioluis.dialog.CoolMaterialDialog}.
+     * Althought you can make your dialog just using the public methods of your instance of {@link es.sergioluis.dialog.CoolMaterialDialog},
      * dialog's width may be incorrect. The {@link #create()} method prevents that issue. Plus, this
      * Builder class provide an easy way to do method chaining and some super-charged methods to
      * do more in less code.
@@ -667,11 +656,11 @@ public class CoolMaterialDialog extends Dialog {
         /**
          * Set the title's text color of the Dialog.
          *
-         * @param color new title's text color, in RGB integer representation.
+         * @param colorResId new title's text color resource.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setTitleTextColor(@ColorRes int color) {
-            dialog.setTitleTextColor(color);
+        public Builder setTitleTextColor(@ColorRes int colorResId) {
+            dialog.setTitleTextColor(colorResId);
             return this;
         }
 
@@ -691,12 +680,12 @@ public class CoolMaterialDialog extends Dialog {
          * Set the title text and its color.
          *
          * @param resId   new dialog's title text resource.
-         * @param colorId new dialog's title text color.
+         * @param colorResId new dialog's title text color resource.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setTitle(@StringRes int resId, @ColorRes int colorId) {
+        public Builder setTitle(@StringRes int resId, @ColorRes int colorResId) {
             dialog.setTitle(resId);
-            dialog.setTitleTextColor(colorId);
+            dialog.setTitleTextColor(colorResId);
             return this;
         }
 
@@ -704,12 +693,12 @@ public class CoolMaterialDialog extends Dialog {
          * Set the title text and its color.
          *
          * @param title   new dialog's title text.
-         * @param colorId new dialog's title text color.
+         * @param colorResourceId new dialog's title text color resource.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setTitle(CharSequence title, @ColorRes int colorId) {
+        public Builder setTitle(CharSequence title, @ColorRes int colorResourceId) {
             dialog.setTitle(title);
-            dialog.setTitleTextColor(colorId);
+            dialog.setTitleTextColor(colorResourceId);
             return this;
         }
 
@@ -719,11 +708,11 @@ public class CoolMaterialDialog extends Dialog {
          * @param radius radius of the shadow. By default, {@value 6}
          * @param dx     x distance from its drwan position. By default, {@value 2}
          * @param dy     y distance from its drwan position. By default, {@value 2}
-         * @param color  shadow's color, by default black {@code #000}
+         * @param argbColor  shadow's color, by default black {@code #000}, in ARGB integer representation.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setTitleTextShadow(float radius, float dx, float dy, @ColorRes int color) {
-            dialog.setTitleTextShadow(radius, dx, dy, color);
+        public Builder setTitleTextShadow(float radius, float dx, float dy, @ColorRes int argbColor) {
+            dialog.setTitleTextShadow(radius, dx, dy, argbColor);
             return this;
         }
 
@@ -731,11 +720,11 @@ public class CoolMaterialDialog extends Dialog {
          * Set dialog's header background color to {@code color}. Default header's background color
          * is #37474F.
          *
-         * @param color new header's background color resource.
+         * @param colorResId new header's background color resource.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setHeaderBackgroundColor(@ColorRes int color) {
-            dialog.setHeaderBackgroundColor(color);
+        public Builder setHeaderBackgroundColor(@ColorRes int colorResId) {
+            dialog.setHeaderBackgroundColor(colorResId);
             return this;
         }
 
@@ -1029,11 +1018,11 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color resource id of the new color for the button when it is in its default state.
+         * @param colorResId resource id of the new color for the button when it is in its default state.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setPrimaryButtonDefaultColor(@ColorRes int color) {
-            dialog.setPrimaryButtonDefaultColor(color);
+        public Builder setPrimaryButtonDefaultColor(@ColorRes int colorResId) {
+            dialog.setPrimaryButtonDefaultColor(colorResId);
             return this;
         }
 
@@ -1044,11 +1033,11 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color resource id of the new color for the button when it is focused.
+         * @param colorResId resource id of the new color for the button when it is focused.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setPrimaryButtonFocusedColor(@ColorRes int color) {
-            dialog.setPrimaryButtonFocusedColor(color);
+        public Builder setPrimaryButtonFocusedColor(@ColorRes int colorResId) {
+            dialog.setPrimaryButtonFocusedColor(colorResId);
             return this;
         }
 
@@ -1058,28 +1047,28 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color resource id of the new color for the button when it is pressed.
+         * @param colorResId resource id of the new color for the button when it is pressed.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setPrimaryButtonPressedColor(@ColorRes int color) {
-            dialog.setPrimaryButtonPressedColor(color);
+        public Builder setPrimaryButtonPressedColor(@ColorRes int colorResId) {
+            dialog.setPrimaryButtonPressedColor(colorResId);
             return this;
         }
 
         /**
          * Define colors and action of the primary button.
          *
-         * @param defaultColor color of the primary button when it is in its default state.
-         * @param pressedColor color of the primary button when it is pressed (activated).
-         * @param focusedColor color of the primary button when it is focused.
+         * @param defaultColorResId color resource id of the primary button when it is in its default state.
+         * @param pressedColorResId color resource id of the primary button when it is pressed (activated).
+         * @param focusedColorResId color resource id of the primary button when it is focused.
          * @param l            callback to be invoked when the primary button is clicked.
          * @param dismiss      if the dialog must be dismissed once the callback action is complete.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setPrimaryButton(@ColorRes int defaultColor, @ColorRes int pressedColor, @ColorRes int focusedColor, View.OnClickListener l, boolean dismiss) {
-            dialog.setPrimaryButtonDefaultColor(defaultColor);
-            dialog.setPrimaryButtonPressedColor(pressedColor);
-            dialog.setPrimaryButtonFocusedColor(focusedColor);
+        public Builder setPrimaryButton(@ColorRes int defaultColorResId, @ColorRes int pressedColorResId, @ColorRes int focusedColorResId, View.OnClickListener l, boolean dismiss) {
+            dialog.setPrimaryButtonDefaultColor(defaultColorResId);
+            dialog.setPrimaryButtonPressedColor(pressedColorResId);
+            dialog.setPrimaryButtonFocusedColor(focusedColorResId);
             dialog.setOnPrimaryButtonClickListener(l, dismiss);
             return this;
         }
@@ -1138,11 +1127,11 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color resource id of the new color for the button when it is in its default state.
+         * @param colorResId resource id of the new color for the button when it is in its default state.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setSecondaryButtonDefaultColor(@ColorRes int color) {
-            dialog.setSecondaryButtonDefaultColor(color);
+        public Builder setSecondaryButtonDefaultColor(@ColorRes int colorResId) {
+            dialog.setSecondaryButtonDefaultColor(colorResId);
             return this;
         }
 
@@ -1153,11 +1142,11 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color resource id of the new color for the button when it is focused.
+         * @param colorResId resource id of the new color for the button when it is focused.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setSecondaryButtonFocusedColor(@ColorRes int color) {
-            dialog.setSecondaryButtonFocusedColor(color);
+        public Builder setSecondaryButtonFocusedColor(@ColorRes int colorResId) {
+            dialog.setSecondaryButtonFocusedColor(colorResId);
             return this;
         }
 
@@ -1167,28 +1156,28 @@ public class CoolMaterialDialog extends Dialog {
          * For more info about dialog's layout, please read
          * <a href="https://github.com/SergioLuis/CoolMaterialDialog">the doc</a>.
          *
-         * @param color resource id of the new color for the button when it is pressed.
+         * @param colorResId resource id of the new color for the button when it is pressed.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setSecondaryButtonPressedColor(@ColorRes int color) {
-            dialog.setSecondaryButtonPressedColor(color);
+        public Builder setSecondaryButtonPressedColor(@ColorRes int colorResId) {
+            dialog.setSecondaryButtonPressedColor(colorResId);
             return this;
         }
 
         /**
          * Define colors and action of the secondary button.
          *
-         * @param defaultColor color of the secondary button when it is in its default state.
-         * @param pressedColor color of the secondary button when it is pressed (activated).
-         * @param focusedColor color of the secondary button when it is focused.
+         * @param defaultColorResId color resource id of the secondary button when it is in its default state.
+         * @param pressedColorResId color resource id of the secondary button when it is pressed (activated).
+         * @param focusedColorResId color resource id of the secondary button when it is focused.
          * @param l            callback to be invoked when the secondary button is clicked.
          * @param dismiss      if the dialog must be dismissed once the callback action is complete.
          * @return this Builder object to allow chaining of methods.
          */
-        public Builder setSecondaryButton(@ColorRes int defaultColor, @ColorRes int pressedColor, @ColorRes int focusedColor, View.OnClickListener l, boolean dismiss) {
-            dialog.setSecondaryButtonDefaultColor(defaultColor);
-            dialog.setSecondaryButtonPressedColor(pressedColor);
-            dialog.setSecondaryButtonFocusedColor(focusedColor);
+        public Builder setSecondaryButton(@ColorRes int defaultColorResId, @ColorRes int pressedColorResId, @ColorRes int focusedColorResId, View.OnClickListener l, boolean dismiss) {
+            dialog.setSecondaryButtonDefaultColor(defaultColorResId);
+            dialog.setSecondaryButtonPressedColor(pressedColorResId);
+            dialog.setSecondaryButtonFocusedColor(focusedColorResId);
             dialog.setOnSecondaryButtonClickListener(l, dismiss);
             return this;
         }

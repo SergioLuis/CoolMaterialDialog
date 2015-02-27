@@ -1,4 +1,4 @@
-package es.sergioluis.materialmenudialog;
+package es.sergioluis.dialog;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
