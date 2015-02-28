@@ -6,9 +6,10 @@
 
 At the moment, this library is not available on Maven (it will be soon), but you can import the Android Studio project and use it. [Here is the 1.0.1 version](https://github.com/SergioLuis/CoolMaterialDialog/releases/tag/v1.0.1). Inside the zip you'll find the following:
 
-* A how-to add and use the Android Studio project.
+* A how-to add and use the Android Studio project (updated 28-02-2015 14:02)
 * Complete HTML Javadoc.
 * LICENSE file.
+* aar file, if you don't want to build it from scratch.
 
 -----------------------------------------------------------
 
