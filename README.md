@@ -22,7 +22,7 @@ compile 'com.github.SergioLuis:CoolMaterialDialog:1.0.1'
 
 If you use Maven, it's easy too.
 
-```
+```xml
 <repository>
     <id>jitpack.io</id>
     <url>https://jitpack.io</url>
