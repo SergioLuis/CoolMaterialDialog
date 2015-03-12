@@ -4,35 +4,69 @@
 
 ###### Usage instructions
 
-At the moment, this library is not available on Maven (it will be soon), but you can import the Android Studio project and use it. [Here is the 1.0.1 version](https://github.com/SergioLuis/CoolMaterialDialog/releases/tag/v1.0.1). Inside the zip you'll find the following:
+If you use gradle, is just a couple of lines, I promise. First, in your project-scope build.gradle file, you must add the following:
 
-* A how-to add and use the Android Studio project (updated 28-02-2015 14:02)
-* Complete HTML Javadoc.
-* LICENSE file.
-* aar file, if you don't want to build it from scratch.
+```
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+```
+
+And then, add the depency:
+
+```
+compile 'com.github.SergioLuis:CoolMaterialDialog:1.0.1'
+```
+
+If you use Maven, it's easy too.
+
+```
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+```
+
+And then, the dependency:
+
+```xml
+<dependency>
+    <groupId>com.github.SergioLuis</groupId>
+    <artifactId>CoolMaterialDialog</artifactId>
+    <version>1.0.1</version>
+</dependency>
+```
+
+If you want to read the source or have a handy HTML Javadoc, feel free to clone this repo and add it to Android Studio. The APACHE License allows you to fool around and play with the code.
 
 -----------------------------------------------------------
 
 ## Vanilla dialog  
 
 ![Vanilla dialog](https://img.imgur.com/VNNhXm2.png)  
+_Wow, that looks cool, but it must be really really difficult to use, right?_
 
-
-```java
+```javas
 CoolMaterialDialog.Builder defaultBuilder = new CoolMaterialDialog.Builder(MainActivity.this);
 defaultBuilder.setPrimaryHeaderImageResource(R.drawable.ic_launcher)
     .setOnPrimaryButtonClickListener(new View.OnClickListener() {
+    
         @Override
         public void onClick(View v) {
             Toast.makeText(getApplicationContext(), "Primary button", Toast.LENGTH_SHORT).show();
         }
-    }, true)
+        
+    }, true) // false if you don't want to dismiss the Dialog after the onClick is completed.
    .setOnSecondaryButtonClickListener(new View.OnClickListener() {
+   
         @Override
         public void onClick(View v) {
             Toast.makeText(getApplicationContext(), "Secondary button", Toast.LENGTH_SHORT).show();
         }
-   }, true)
+        
+   }, true) // false if you don't want to dismiss the Dialog after the onClick is completed.
    .setTitle("Vanilla")
    .create().show();
 ```
@@ -61,11 +95,54 @@ defaultBuilder.setPrimaryHeaderImageResource(R.drawable.ic_launcher)
 
 --------------------------------------------------------------------------
 
-## Delibes dialog
+## UVa dialog
 
 ![Delibes dialog](https://img.imgur.com/9GXALFQ.png)  
 
+_Sapienta aedificavit sibi domum (Knowledge built its own home)_
+
 ```java
+CoolMaterialDialog.Builder uvaBuilder = new CoolMaterialDialog.Builder(MainActivity.this);
+uvaBuilder.setSecondaryHeaderImageResource(R.drawable.uva_logo)
+    .setHeaderBackgroundResource(R.drawable.campus_miguel_delibes)
+    .setTitle(R.string.uva_dialog_title)
+    .setTitleTextShadow(10, 2, 2, Color.BLACK)
+    .setPrimaryButtonImageResource(R.drawable.ic_action_call)
+    .setPrimaryButton(R.color.blue_default, R.color.blue_pressed, R.color.blue_focused, 
+        new View.OnClickListener() {
+        
+            @Override
+            public void onClick(View v) {
+                // Call stuff
+            }
+            
+        }, true)
+    .setSecondaryButtonImageResource(R.drawable.ic_action_directions)
+    .setSecondaryButton(R.color.yellow_default, R.color.yellow_pressed, R.color.yellow_focused,
+        new View.OnClickListener() {
+        
+            @Override
+            public void onClick(View v) {
+                // Maps stuff
+            }
+            
+        }, true)
+    .setContentView(R.layout.content_uva);
+    .create().show();
+```
+
+* __Inner view__ is your main content. It is set through ```setContentView(int resId)``` or ```setContentView(View v)```.  If you pass a layout identifier, the Builder will inflate it as a View and pass it to ```setContentView(View v)```, so if you want to hold a reference to the inner view and its elements (maybe you want to change a text programatically), inflate your own View, hold a reference to it and use ```setContentView(View v)```. But a ```CoolMaterialDialog::findViewById(int id)``` method is on its way.
+
+
+```java
+View myContent = LayoutInflater.from(getApplicationContext()).inflate(R.layout.content_uva, null);
+
+myContent.findViewById(R.id.my_list).setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        // Click on the list, stuff happens
+    });
+
 CoolMaterialDialog.Builder uvaBuilder = new CoolMaterialDialog.Builder(MainActivity.this);
 uvaBuilder.setSecondaryHeaderImageResource(R.drawable.uva_logo)
     .setHeaderBackgroundResource(R.drawable.campus_miguel_delibes)
@@ -74,45 +151,60 @@ uvaBuilder.setSecondaryHeaderImageResource(R.drawable.uva_logo)
     .setPrimaryButtonImageResource(R.drawable.ic_action_call)
     .setPrimaryButton(R.color.blue_default, R.color.blue_pressed, R.color.blue_focused, 
         new View.OnClickListener() {
+        
             @Override
             public void onClick(View v) {
                 // Call stuff
             }
+            
         }, true)
     .setSecondaryButtonImageResource(R.drawable.ic_action_directions)
     .setSecondaryButton(R.color.yellow_default, R.color.yellow_pressed, R.color.yellow_focused,
         new View.OnClickListener() {
+        
             @Override
             public void onClick(View v) {
                 // Maps stuff
             }
+            
         }, true)
-    .setContentView(R.layout.content_uva);
+    .setContentView(myContent); // Using our own view
     .create().show();
+    
+((TextView) myContent.findViewById(R.id.title)).setText("I can change elements from code!");
 ```
 
-* __Inner view__ is your main content. It is set through ```setContentView(int resId)``` or ```setContentView(View v)```.  
-
 -----------------------------------------------------------------
 
 ## Waters dialog
 
------------------------------------------------------------------
+![Waters dialog](https://img.imgur.com/9pbNszq.png) 
 
-## Waters dialog
-
-![Waters dialog](https://img.imgur.com/9pbNszq.png)  
+_Does anybody here remember Vera Lynn...?_
 
 ```java
 CoolMaterialDialog.Builder rogerBuilder = new CoolMaterialDialog.Builder(MainActivity.this);
 rogerBuilder.setSecondaryHeaderImageResource(R.drawable.roger_waters)
     .setTitle("Roger Waters")
     .setOnPrimaryButtonClickListener(new View.OnClickListener() {
+    
         @Override
         public void onClick(View v) {
             Toast.makeText(getApplicationContext(), "onPrimaryButtonClick", Toast.LENGTH_SHORT).show();
         }
+        
     }, true)
     .setHeaderBackgroundResource(R.drawable.dark_side)
     .setContentView(R.layout.content_roger_waters)
     .create().show();
+```
+
+## LICENSE
+
+Copyright 2015 Sergio Luis Para
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
