@@ -37,6 +37,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import es.sergioluis.materialmenudialog.R;
 
 /**
  * Highly customizable dialog window featuring (most of the) Material Design guidelines.
