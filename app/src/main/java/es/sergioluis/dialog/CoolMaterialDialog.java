@@ -574,8 +574,8 @@ public class CoolMaterialDialog extends Dialog {
      */
     @Nullable
     public View findViewById(int id) {
-        if (v != null) {
-            return v.findViewById(id);
+        if (contentView != null) {
+            return contentView.findViewById(id);
         }
         return null;
     }
