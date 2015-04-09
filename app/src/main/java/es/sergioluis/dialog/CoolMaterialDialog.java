@@ -565,6 +565,17 @@ public class CoolMaterialDialog extends Dialog {
     }
 
     /**
+     * Retrieves dialog's content view if it was previously set.
+     * {@link #setContentView(View)}
+     *
+     * @return dialog's content view if it was previosuly set, null otherwise.
+     */
+    @Nullable
+    public View getcontentView() {
+        return contentView;
+    }
+
+    /**
      * Look for a child view with the given id. If the view has the given id, return this view.
      * Please keep in mind that you must have set previously a content view in which hierarchy
      * you want to find the view.
