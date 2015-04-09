@@ -66,6 +66,7 @@ public class CoolMaterialDialog extends Dialog {
     private View.OnTouchListener touchListener;
 
     private ViewHolder vh;
+    private View contentView;
 
     private Drawable primaryCircle;
     private Drawable primaryCircleDark;
@@ -560,6 +561,23 @@ public class CoolMaterialDialog extends Dialog {
         int index = parentLayout.indexOfChild(vh.contentView);
         parentLayout.removeViewAt(index);
         parentLayout.addView(v, index);
+        contentView = v;
+    }
+
+    /**
+     * Look for a child view with the given id. If the view has the given id, return this view.
+     * Please keep in mind that you must have set previously a content view in which hierarchy
+     * you want to find the view.
+     *
+     * @param id the id of the desired child view.
+     * @return the view that has the given id in the hierarchy or null.
+     */
+    @Nullable
+    public View findViewById(int id) {
+        if (v != null) {
+            return v.findViewById(id);
+        }
+        return null;
     }
 
     /**
